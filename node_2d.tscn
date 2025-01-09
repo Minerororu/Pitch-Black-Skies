@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://ufht06e52etj"]
+
+[ext_resource type="Script" path="res://Dialogo.gd" id="1_7vry0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(961, 538)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_7vry0")
+
+[node name="Boneco1" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1376, 422)
+scale = Vector2(2.7, 2.7)
+flip_h = true
+
+[node name="Boneco2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(440, 447)
+scale = Vector2(1.7, 1.7)
+flip_h = true
+
+[node name="Dialogo" type="Button" parent="CanvasLayer"]
+z_index = 99
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -235.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+alignment = 0
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Dialogo"]
+wait_time = 0.025
+one_shot = true
+autostart = true
+
+[connection signal="button_up" from="CanvasLayer/Dialogo" to="CanvasLayer" method="_on_dialogo_button_up"]
+[connection signal="timeout" from="CanvasLayer/Dialogo/Timer" to="CanvasLayer" method="_on_timer_timeout"]
